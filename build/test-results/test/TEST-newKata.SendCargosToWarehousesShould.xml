@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="newKata.SendCargosToWarehousesShould" tests="3" skipped="0" failures="0" errors="0" timestamp="2020-03-06T22:00:33" hostname="DESKTOP-LQGG1V6" time="0.127">
+  <properties/>
+  <testcase name="returns 5 hours when shipping to WAREHOUSE_B warehouse 5 hours" classname="newKata.SendCargosToWarehousesShould" time="0.109"/>
+  <testcase name="return 15 hours when two truck go to WAREHOUSE_B" classname="newKata.SendCargosToWarehousesShould" time="0.015"/>
+  <testcase name="return 25 hours when one truck go to WAREHOUSE_B " classname="newKata.SendCargosToWarehousesShould" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
