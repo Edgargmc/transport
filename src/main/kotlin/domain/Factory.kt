@@ -7,7 +7,7 @@ class Factory(containerDestinations: List<Locations>) {
     private val containersInFactory = Stack<Container>()
 
     init {
-        containersInFactory.addAll(containers)
+        containersInFactory.addAll(containers.reversed())
     }
 
     fun hasContainerToSend() = containersInFactory.isNotEmpty()

@@ -1,12 +1,14 @@
 package domain
 
 class Truck {
-    private var container: Container? = null
+    var container: Container? = null
     private var remainingTimeToDestination = 0
+    private var destination = Locations.FACTORY
 
-    fun sendContainer(container: Container) {
+    fun sendContainer(container: Container, destination: Locations) {
         this.container = container
-        this.remainingTimeToDestination = container.destination.hours
+        this.destination = destination
+        this.remainingTimeToDestination = destination.hours
     }
 
     fun hourPassed() {
@@ -22,7 +24,7 @@ class Truck {
     private fun deliverContainer() {
         val timeToFactory = this.container!!.destination.hours
         this.remainingTimeToDestination = timeToFactory
-        this.container!!.delivered()
+        this.container!!.delivered(this.destination)
         this.container = null
     }
 

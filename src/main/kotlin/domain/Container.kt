@@ -4,7 +4,7 @@ class Container(val destination: Locations) {
     var currentLocation = Locations.FACTORY
         private set
 
-    fun delivered() {
+    fun delivered(destination: Locations) {
         currentLocation = destination
     }
 

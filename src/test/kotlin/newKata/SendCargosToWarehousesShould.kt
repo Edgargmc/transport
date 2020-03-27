@@ -1,6 +1,7 @@
 package newKata
 
 import domain.Locations.*
+import domain.Ship
 import domain.Truck
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Test
@@ -13,7 +14,7 @@ class SendCargosToWarehousesShould {
         val warehouse = listOf(WAREHOUSE_B)
         val trucks = listOf(Truck())
 
-        val timeDelivered = SendCargosToWarehouses(trucks).execute(warehouse)
+        val timeDelivered = SendCargosToWarehouses(trucks, ships).execute(warehouse)
 
         assertThat(timeDelivered).isEqualTo(5)
     }
@@ -23,7 +24,7 @@ class SendCargosToWarehousesShould {
         val warehouse = listOf(WAREHOUSE_B, WAREHOUSE_B, WAREHOUSE_B)
         val trucks = listOf(Truck())
 
-        val timeDelivered = SendCargosToWarehouses(trucks).execute(warehouse)
+        val timeDelivered = SendCargosToWarehouses(trucks, ships).execute(warehouse)
 
         assertThat(timeDelivered).isEqualTo(25)
     }
@@ -33,8 +34,31 @@ class SendCargosToWarehousesShould {
         val warehouse = listOf(WAREHOUSE_B, WAREHOUSE_B, WAREHOUSE_B)
         val trucks = listOf(Truck(), Truck())
 
-        val timeDelivered = SendCargosToWarehouses(trucks).execute(warehouse)
+        val timeDelivered = SendCargosToWarehouses(trucks, ships).execute(warehouse)
 
         assertThat(timeDelivered).isEqualTo(15)
     }
+
+    @Test
+    fun `return 50 hours when can not delivery to WAREHOUSE_A`() {
+        val warehouse = listOf(WAREHOUSE_A)
+        val trucks = listOf(Truck())
+
+        val timeDelivered = SendCargosToWarehouses(trucks, ships).execute(warehouse)
+
+        assertThat(timeDelivered).isEqualTo(50)
+    }
+
+    @Test
+    fun `return 5 hours when two truck go to WAREHOUSE_B`() {
+        val warehouse = listOf(WAREHOUSE_A)
+        val trucks = listOf(Truck())
+        val ships = listOf(Ship())
+
+        val timeDelivered = SendCargosToWarehouses(trucks, ships).execute(warehouse)
+
+        assertThat(timeDelivered).isEqualTo(5)
+    }
+
+    val ships = listOf<Ship>()
 }
