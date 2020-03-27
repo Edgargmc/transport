@@ -3,11 +3,11 @@ package domain
 class Truck {
     var container: Container? = null
     private var remainingTimeToDestination = 0
-    private var destination = Locations.FACTORY
+    private var destination = TruckDestination.NONE
 
-    fun sendContainer(container: Container, destination: Locations) {
+    fun sendContainer(container: Container) {
         this.container = container
-        this.destination = destination
+        this.destination = gps.route(container.)
         this.remainingTimeToDestination = destination.hours
     }
 
@@ -22,7 +22,7 @@ class Truck {
     }
 
     private fun deliverContainer() {
-        val timeToFactory = this.container!!.destination.hours
+        val timeToFactory = this.container!!.location.hours
         this.remainingTimeToDestination = timeToFactory
         this.container!!.delivered(this.destination)
         this.container = null
@@ -33,8 +33,4 @@ class Truck {
     private fun isInWarehouse() = remainingTimeToDestination == 0 && this.container != null
 
     private fun isTraveling() = remainingTimeToDestination > 0
-
-    fun isInPort(): Boolean {
-        return container!!.currentLocation ==  Locations.PORT
-    }
 }

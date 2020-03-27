@@ -2,8 +2,8 @@ package domain
 
 import java.util.*
 
-class Factory(containerDestinations: List<Locations>) {
-    private val containers = containerDestinations.map { Container(it) }
+class Factory(containerLocations: List<ContainerLocation>) {
+    private val containers = containerLocations.map { Container(it) }
     private val containersInFactory = Stack<Container>()
 
     init {
