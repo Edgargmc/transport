@@ -50,7 +50,7 @@ class SendCargosToWarehousesShould {
     }
 
     @Test
-    fun `return 5 hours when two truck go to WAREHOUSE_B`() {
+    fun `return 5 hours when two truck go to WAREHOUSE_A`() {
         val warehouse = listOf(WAREHOUSE_A)
         val trucks = listOf(Truck())
         val ships = listOf(Ship())

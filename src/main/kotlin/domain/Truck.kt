@@ -33,4 +33,8 @@ class Truck {
     private fun isInWarehouse() = remainingTimeToDestination == 0 && this.container != null
 
     private fun isTraveling() = remainingTimeToDestination > 0
+
+    fun isInPort(): Boolean {
+        return container!!.currentLocation ==  Locations.PORT
+    }
 }
