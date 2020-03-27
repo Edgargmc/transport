@@ -7,6 +7,7 @@ class SendCargosToWarehouses(private val trucks: List<Truck>, private val ships:
         val factory = Factory(containerDestinations)
         var hours = 0
         while (!factory.allContainersDelivered()) {
+
             for (truck in trucks) {
                 if (truck.isInFactory() && factory.hasContainerToSend()) {
                     val container = factory.getContainerToSend()
