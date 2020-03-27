@@ -9,7 +9,7 @@ class Factory(private val trucks: List<Truck>) {
     fun allContainersDelivered() = containers.all { it.isDelivered() }
     private fun hasContainerToSend() = containersInFactory.isNotEmpty()
     private fun getContainerToSend() = containersInFactory.pop()
-    fun registerContainers(destinations: List<Wharehouses>) {
+    fun sendContainers(destinations: List<Wharehouses>) {
         this.containers = destinations.map { Container(it) }
         containersInFactory.addAll(containers.reversed())
     }

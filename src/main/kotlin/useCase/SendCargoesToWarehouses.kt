@@ -5,8 +5,8 @@ import domain.Truck
 import domain.Wharehouses
 
 class SendCargoesToWarehouses(private val trucks: List<Truck>, private val factory: Factory) {
-    fun execute(containers: List<Wharehouses>): Int {
-        factory.registerContainers(containers)
+    fun execute(warehouses: List<Wharehouses>): Int {
+        factory.sendContainers(warehouses)
         var hours = 0
         while (!factory.allContainersDelivered()) {
             factory.hourPassed()
