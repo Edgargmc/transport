@@ -1,12 +1,12 @@
 package domain
 
-class Container(val location: ContainerLocation) {
-    var currentLocation = ContainerLocation.FACTORY
+class Container(val destination: Wharehouses) {
+    var delivered = false
         private set
 
-    fun delivered(destination: ContainerLocation) {
-        currentLocation = destination
+    fun delivered() {
+        this.delivered = true
     }
 
-    fun isDelivered() = currentLocation == location
+    fun isDelivered() = delivered
 }

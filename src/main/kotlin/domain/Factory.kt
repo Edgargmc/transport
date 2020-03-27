@@ -2,15 +2,24 @@ package domain
 
 import java.util.*
 
-class Factory(containerLocations: List<ContainerLocation>) {
-    private val containers = containerLocations.map { Container(it) }
+class Factory(private val trucks: List<Truck>) {
+    private var containers = listOf<Container>()
     private val containersInFactory = Stack<Container>()
 
-    init {
+    fun allContainersDelivered() = containers.all { it.isDelivered() }
+    private fun hasContainerToSend() = containersInFactory.isNotEmpty()
+    private fun getContainerToSend() = containersInFactory.pop()
+    fun registerContainers(destinations: List<Wharehouses>) {
+        this.containers = destinations.map { Container(it) }
         containersInFactory.addAll(containers.reversed())
     }
 
-    fun hasContainerToSend() = containersInFactory.isNotEmpty()
-    fun allContainersDelivered() = containers.all { it.isDelivered() }
-    fun getContainerToSend() = containersInFactory.pop()
+    fun hourPassed() {
+        for (truck in trucks) {
+            if (truck.isInFactory() && hasContainerToSend()) {
+                val container = getContainerToSend()
+                truck.sendContainer(container)
+            }
+        }
+    }
 }
