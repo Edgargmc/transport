@@ -5,6 +5,7 @@ import domain.*
 class SendCargosToWarehouses(private val trucks: List<Truck>, private val ships: List<Ship>) {
     fun execute(containerDestinations: List<Locations>): Int {
         val factory = Factory(containerDestinations)
+        val port = Port()
         var hours = 0
         while (!factory.allContainersDelivered()) {
 

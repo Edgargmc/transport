@@ -1,6 +1,0 @@
-C:\Users\Pablo\Documents\code\transport\src\main\kotlin\domain\Container.kt
-C:\Users\Pablo\Documents\code\transport\src\main\kotlin\domain\Factory.kt
-C:\Users\Pablo\Documents\code\transport\src\main\kotlin\domain\Locations.kt
-C:\Users\Pablo\Documents\code\transport\src\main\kotlin\domain\Ship.kt
-C:\Users\Pablo\Documents\code\transport\src\main\kotlin\domain\Truck.kt
-C:\Users\Pablo\Documents\code\transport\src\main\kotlin\useCase\SendCargosToWarehouses.kt
