@@ -1,21 +1,11 @@
 package useCase
 
-import domain.Factory
-import domain.Truck
-import domain.Wharehouses
+import domain.*
 
 class SendCargoesToWarehouses(private val trucks: List<Truck>, private val factory: Factory) {
     fun execute(warehouses: List<Wharehouses>): Int {
-        factory.sendContainers(warehouses)
-        var hours = 0
-        while (!factory.allContainersDelivered()) {
-            factory.hourPassed()
-            for (truck in trucks) {
-                truck.hourPassed()
-            }
-            hours++
-            if(hours > 50) break
-        }
-        return hours
+        val containers = warehouses.map { Container(it) }
+        val system = TransportTycoon(this.trucks, this.factory, containers)
+        return system.sendContainers()
     }
 }
