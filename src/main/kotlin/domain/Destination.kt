@@ -1,7 +1,8 @@
 package domain
 
-enum class TruckDestination {
+enum class Destination {
     PORT,
+    WHAREHOUSEA,
     WHAREHOUSEB,
     NONE
 }

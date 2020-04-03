@@ -14,6 +14,7 @@ class SendCargoesToWarehouses(private val trucks: List<Truck>, private val facto
                 truck.hourPassed()
             }
             hours++
+            if(hours > 50) break
         }
         return hours
     }

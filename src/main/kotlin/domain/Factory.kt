@@ -17,8 +17,7 @@ class Factory(private val trucks: List<Truck>) {
     fun hourPassed() {
         for (truck in trucks) {
             if (truck.isInFactory() && hasContainerToSend()) {
-                val container = getContainerToSend()
-                truck.sendContainer(container)
+                truck.sendContainer(getContainerToSend())
             }
         }
     }

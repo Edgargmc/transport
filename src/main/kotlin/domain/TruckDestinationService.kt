@@ -1,21 +1,21 @@
 package domain
 
 class TruckDestinationService {
-    fun route(location: Wharehouses): TruckDestination {
+    fun route(location: Wharehouses): Destination {
         if (location == Wharehouses.A) {
-            return TruckDestination.PORT;
+            return Destination.PORT;
         } else {
-            return TruckDestination.WHAREHOUSEB;
+            return Destination.WHAREHOUSEB;
         }
     }
 
-    fun timeToDestinationFromFactory(destination: TruckDestination): Int {
-        if (destination == TruckDestination.PORT) return 1
+    fun timeToDestinationFromFactory(destination: Destination): Int {
+        if (destination == Destination.PORT) return 1
         return 5
     }
 
-    fun timeToFactoryFromDestination(destination: TruckDestination): Int {
-        if (destination == TruckDestination.PORT) return 1
+    fun timeToFactoryFromDestination(destination: Destination): Int {
+        if (destination == Destination.PORT) return 1
         return 5
     }
 }

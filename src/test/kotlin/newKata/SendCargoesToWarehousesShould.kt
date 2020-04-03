@@ -39,5 +39,15 @@ class SendCargoesToWarehousesShould {
         assertThat(timeDelivered).isEqualTo(15)
     }
 
+    @Test
+    fun `xxx`() {
+        val warehouse = listOf(Wharehouses.B, Wharehouses.A)
+        val trucks = listOf(Truck(TruckDestinationService()), Truck(TruckDestinationService()))
+
+        val timeDelivered = sendCargoesToWarehouses(trucks).execute(warehouse)
+
+        assertThat(timeDelivered).isEqualTo(5)
+    }
+
     private fun sendCargoesToWarehouses(trucks: List<Truck>) = SendCargoesToWarehouses(trucks, Factory(trucks))
 }

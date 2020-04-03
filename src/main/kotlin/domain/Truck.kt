@@ -3,7 +3,7 @@ package domain
 class Truck(val truckDestinationService: TruckDestinationService) {
     var container: Container? = null
     private var remainingTimeToDestination = 0
-    private var destination = TruckDestination.NONE
+    private var destination = Destination.NONE
 
     fun sendContainer(container: Container) {
         this.container = container
@@ -18,13 +18,16 @@ class Truck(val truckDestinationService: TruckDestinationService) {
 
         if (isInWarehouse()) {
             deliverContainer()
+            timeToFactory()
         }
     }
 
+    private fun timeToFactory() {
+        this.remainingTimeToDestination = truckDestinationService.timeToFactoryFromDestination(destination)
+    }
+
     private fun deliverContainer() {
-        val timeToFactory = this.truckDestinationService.timeToFactoryFromDestination(this.destination)
-        this.remainingTimeToDestination = timeToFactory
-        this.container!!.delivered()
+        this.container!!.delivered(this.destination)
         this.container = null
     }
 
