@@ -1,0 +1,1 @@
+Refactor game status of Game
