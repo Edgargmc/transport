@@ -1,6 +1,6 @@
 package transport
 
-class Truck(val travel: Travel) {
+class Truck(private val travel: Travel) {
     fun go() {
         travel.time = 1
     }
