@@ -6,6 +6,14 @@ import transport.travel.*
 
 class TruckShould {
     @Test
+    fun `starts at Factory`() {
+        val truck = Truck()
+
+        assertThat(truck.currentLocation).isEqualTo(Location.Factory)
+    }
+
+
+    @Test
     fun `Takes an hour to the Port`() {
         val travel = createTravel(Location.A)
 
