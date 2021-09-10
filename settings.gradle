@@ -1,3 +1,2 @@
-rootProject.name = "mastermind-group-1"
+rootProject.name = "transport-tycoon"
 include ':core'
-include ':ui'

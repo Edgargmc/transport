@@ -6,14 +6,14 @@ import transport.Factory
 import transport.Size
 import transport.travel.Container
 import transport.travel.Containers
-import transport.travel.Location
+import transport.travel.Locations
 
 class FactoryShould {
 
     @Test
     fun `receive list of containers`() {
         val containers = Containers()
-        containers.add(Container(Location.WarehouseB))
+        containers.add(Container(Locations.WarehouseB))
 
         val factory = Factory()
         factory.add(containers)

@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test
 import transport.Size
 import transport.travel.Container
 import transport.travel.Containers
-import transport.travel.Location
+import transport.travel.Locations
 
 class ContainersShould {
     @Test
@@ -19,7 +19,7 @@ class ContainersShould {
     fun `add containers`() {
         val containers = Containers()
 
-        containers.add(Container(Location.WarehouseB))
+        containers.add(Container(Locations.WarehouseB))
 
         assertThat(containers.size()).isEqualTo(Size(1))
     }

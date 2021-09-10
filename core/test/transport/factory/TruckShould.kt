@@ -3,51 +3,37 @@ package transport.factory
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import transport.Factory
-import transport.travel.*
-import transport.travel.Location.*
+import transport.travel.Container
+import transport.travel.Locations.*
+import transport.travel.Truck
 
 class TruckShould {
     @Test
     fun `starts at Factory`() {
-        val truck = Truck()
+        val truck = Truck(Factory())
 
         assertThat(truck.location).isEqualTo(Factory)
     }
 
     @Test
-    fun `starts trip to WarehouseB when container is available in Factory`() {
+    fun `when container destination is Warehouse B and an hour passed, it is on the road`() {
         val factory = Factory()
-        factory.add(Container(WarehouseB))
-        val truck = Truck(factory = factory)
+        factory.add(Container(destination = WarehouseB))
+        val truck = Truck(factory)
 
-        truck.tick()
+        truck.hourPassed()
 
         assertThat(truck.location).isEqualTo(OnTheRoad)
     }
 
     @Test
-    fun `Takes an hour to the Port`() {
-        val travel = createTravel(WarehouseA)
+    fun `when container destination is Warehouse B and 5 hours has passed, it is on Warehouse B`() {
+        val factory = Factory()
+        factory.add(Container(destination = WarehouseB))
+        val truck = Truck(factory)
 
-        Truck(travel).go()
+        repeat(5) { truck.hourPassed() }
 
-        assertThat(travel.hours).isEqualTo(Hours(1))
-    }
-
-    @Test
-    fun `Takes five hours to B`() {
-        val travel = createTravel(WarehouseB)
-
-        Truck(travel).go()
-
-        assertThat(travel.hours).isEqualTo(Hours(5))
-    }
-
-    private fun createTravel(destination: Location, containers: Int = 1): Travel {
-        val containersList = Containers()
-        repeat(containers) {
-            containersList.add(Container(WarehouseB))
-        }
-        return Travel(destination, containersList)
+        assertThat(truck.location).isEqualTo(WarehouseB)
     }
 }

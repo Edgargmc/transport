@@ -19,4 +19,4 @@ class Containers {
     }
 }
 
-class Container(WarehouseB: Location)
+class Container(destination: Locations)

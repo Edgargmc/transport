@@ -45,4 +45,3 @@ allprojects {
         sourceSets["test"].apply { java.srcDir("test") }
     }
 }
-
