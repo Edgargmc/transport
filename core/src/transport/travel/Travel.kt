@@ -1,6 +1,6 @@
 package transport.travel
 
-class Travel(val goal: Location, val containers: Containers) {
+class Travel(val destination: Location, val containers: Containers) {
     var location = Location.Factory
     var hours: Hours = Hours(0)
 
@@ -9,7 +9,7 @@ class Travel(val goal: Location, val containers: Containers) {
     }
 
     fun nextLocation() {
-        location = location.nextPosition(goal)
+        location = location.nextPosition(destination)
     }
 
 }

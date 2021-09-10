@@ -7,13 +7,27 @@ import transport.travel.*
 class TruckShould {
     @Test
     fun `Takes an hour to the Port`() {
-        val containers = Containers()
-        containers.add(Container())
-        val travel = Travel(Location.A, containers)
+        val travel = createTravel(Location.A)
 
         Truck(travel).go()
 
         assertThat(travel.hours).isEqualTo(Hours(1))
     }
 
+    @Test
+    fun `Takes five hours to B`() {
+        val travel = createTravel(Location.B)
+
+        Truck(travel).go()
+
+        assertThat(travel.hours).isEqualTo(Hours(5))
+    }
+
+    private fun createTravel(destination: Location, containers: Int = 1): Travel {
+        val containersList = Containers()
+        repeat(containers) {
+            containersList.add(Container())
+        }
+        return Travel(destination, containersList)
+    }
 }
