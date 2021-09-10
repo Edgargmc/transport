@@ -29,6 +29,6 @@ class TravelShould {
         assertThat(travel.location).isEqualTo(nextLocation)
     }
 
-    private val location = Location.A
+    private val location = Location.WarehouseA
     private val containers = Containers()
 }

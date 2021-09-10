@@ -1,20 +1,25 @@
 package transport.travel
 
 enum class Location {
-    A {
+    WarehouseA {
         override fun nextPosition(destiny: Location): Location = Port
     },
-    B {
+    WarehouseB {
         override fun nextPosition(destiny: Location) = Factory
     },
     Factory {
         override fun nextPosition(destiny: Location): Location {
-            if (destiny == A) return Port
-            return B
+            if (destiny == WarehouseA) return Port
+            return WarehouseB
         }
     },
     Port {
-        override fun nextPosition(destiny: Location) = A
+        override fun nextPosition(destiny: Location) = WarehouseA
+    },
+    OnTheRoad{
+        override fun nextPosition(destiny: Location): Location {
+            TODO("Not yet implemented")
+        }
     };
 
     abstract fun nextPosition(destiny: Location): Location

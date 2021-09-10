@@ -1,5 +1,6 @@
 package transport
 
+import transport.travel.Container
 import transport.travel.Containers
 
 class Factory {
@@ -7,5 +8,9 @@ class Factory {
 
     fun add(containers: Containers) {
         this.containers.addAll(containers)
+    }
+
+    fun add(container: Container) {
+        TODO("Not yet implemented")
     }
 }
