@@ -11,7 +11,7 @@ class ContainersShould {
     fun `start without containers`() {
         val containers = Containers()
 
-        assertThat(containers.size).isEqualTo(Size(0))
+        assertThat(containers.size()).isEqualTo(Size(0))
     }
 
     @Test
@@ -20,6 +20,6 @@ class ContainersShould {
 
         containers.add(Container())
 
-        assertThat(containers.size).isEqualTo(Size(1))
+        assertThat(containers.size()).isEqualTo(Size(1))
     }
 }
