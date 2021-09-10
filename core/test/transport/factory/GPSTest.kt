@@ -7,13 +7,13 @@ import transport.Route
 import transport.travel.Hours
 import transport.travel.Locations
 
-class MapTest {
+class GPSTest {
     @Test
     fun `travel duration from Factory to Warehouse B is 5 hours`() {
         val route = Route(Locations.Factory, Locations.WarehouseB, Hours(5))
         val gps = GPS()
         gps.add(route)
-        val duration = gps.duration(beginning = Locations.Factory, destination = Locations.Port)
+        val duration = gps.duration(from = Locations.Factory, to = Locations.Port)
 
         assertThat(duration).isEqualTo(Hours(5))
     }
@@ -22,7 +22,7 @@ class MapTest {
     fun `travel duration from Factory to Port is 1 hour`() {
         val gps = GPS()
 
-        val duration = gps.duration(beginning = Locations.Factory, destination = Locations.Port)
+        val duration = gps.duration(from = Locations.Factory, to = Locations.Port)
 
         assertThat(duration).isEqualTo(Hours(1))
     }
